@@ -24,7 +24,6 @@
                     ${medicine.name} (${medicine.country}) - ${medicine.price} $ <br>
                 Количество лекарства к покупке:<input type="number" name="quantity" value="0"/>
             </label>
-
         </h3>
     </c:forEach>
     <button type="submit">Добавить лекарства в корзину</button>
