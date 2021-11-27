@@ -4,7 +4,6 @@
     <title>Admin page</title>
 </head>
 <body>
-
 <%@ include file="header.jsp"%>
 <br>
 <a href="${pageContext.request.contextPath}/admin-users"><button type="button">Список пользователей</button></a>
