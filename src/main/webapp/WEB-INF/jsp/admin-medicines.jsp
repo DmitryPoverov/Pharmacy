@@ -4,36 +4,49 @@
 <head>
     <title>Admin medicines</title>
 </head>
-<%--<body>--%>
-<%--<c:if test="${requestScope.result != null}">--%>
-<%--    <div style="color: blue">--%>
-<%--        <span>${requestScope.result}</span>--%>
-<%--    </div>--%>
-<%--</c:if>--%>
+
+<body>
+<%@ include file="header.jsp" %>
+
+<c:if test="${not empty requestScope.result && (requestScope.result.equals('Successfully deleted') || requestScope.result.equals('Successfully saving'))}">
+    <div style ="color: blue">
+        <p>${requestScope.result}</p>
+    </div>
+</c:if>
+<c:if test="${not empty requestScope.result && (requestScope.result.equals('Was not deleted') || requestScope.result.equals('Was not saved'))}">
+    <div style ="color: red">
+        <p>${requestScope.result}</p>
+    </div>
+</c:if>
 
 <form action="${pageContext.request.contextPath}/admin-medicines" method="post">
-    <fieldset>
-        <label id="add"><h3>Добавить лекарство в базу данных:(Исправить обновление страницы) </h3>
-            <input type="text" placeholder="name" name="name">
-            <input type="text" placeholder="county" name="country"/>
-            <input type="text" placeholder="price" name="price"/>
+    <h3>
+        <label id="add">Добавить лекарство в базу данных:<br>
+            <input type="text" placeholder="name" required name="name">
+            <input type="text" placeholder="county" required name="country"/>
+            <input type="number" placeholder="price" required name="price"/>
             <input type="hidden" name="medicineAddition" value="medicineAddition"/>
             <button type="submit">Добавить</button>
         </label>
-    </fieldset>
+    </h3>
 </form>
 
-<form action="${pageContext.request.contextPath}/admin-medicines" method="post">
+<h3>Список лекарств из базы данных:</h3>
+<ol>
     <c:forEach var="medicine" items="${sessionScope.medicines}">
-        <fieldset>
-            <h3>${medicine.name} ${medicine.country} ${medicine.price} USD <button type="submit">Удалить</button></h3>
-            <input type="hidden" name="id" value="${medicine.id}"/>
-            <input type="hidden" name="name" value="${medicine.name}"/>
-            <input type="hidden" name="country" value="${medicine.country}"/>
-            <input type="hidden" name="price" value="${medicine.price}"/>
-        </fieldset>
+        <li>
+            <form action="${pageContext.request.contextPath}/admin-medicines" method="post">
+                <input type="hidden" name="id" value="${medicine.id}"/>
+                <input type="hidden" name="name" value="${medicine.name}"/>
+                <input type="hidden" name="country" value="${medicine.country}"/>
+                <input type="hidden" name="price" value="${medicine.price}"/>
+                <h3>${medicine.name} (${medicine.country}) - ${medicine.price}$
+                    <button type="submit">Удалить</button>
+                </h3>
+            </form>
+        </li>
     </c:forEach>
-</form>
-
+</ol>
+<br>
 </body>
 </html>

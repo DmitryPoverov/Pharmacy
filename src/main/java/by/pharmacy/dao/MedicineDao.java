@@ -25,6 +25,7 @@ public class MedicineDao implements Dao<Integer, Medicine> {
             SELECT *
             FROM medicines
             WHERE id = ?
+            ORDER BY id
             """;
 
     @Override
@@ -40,7 +41,6 @@ public class MedicineDao implements Dao<Integer, Medicine> {
                 medicine.setName(resultSet.getObject("name", String.class));
                 medicine.setPrice(resultSet.getInt("price"));
                 medicine.setCountry(resultSet.getString("country"));
-
             }
             return Optional.ofNullable(medicine);
         }
@@ -67,7 +67,7 @@ public class MedicineDao implements Dao<Integer, Medicine> {
         try(Connection connection = ConnectionManager.get();
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_ALL)){
             ResultSet resultSet = preparedStatement.executeQuery();
-            List<Medicine> listOfMedicine = new ArrayList();
+            List<Medicine> listOfMedicine = new ArrayList<>();
             while (resultSet.next()) {
                 listOfMedicine.add(buildMedicine(resultSet));
             }

@@ -5,16 +5,17 @@
     <title>Users</title>
 </head>
 <body>
-
-<form action="/admin-users" method="post">
+<%@ include file="header.jsp" %>
+<h3>Список пользователей из базы данных:</h3>
+<form action="${pageContext.request.contextPath}/admin-users" method="post">
     <c:forEach var="user" items="${requestScope.users}">
-        <fieldset>
-            <h3>${user.id} ${user.name} ${user.email} ${user.role}</h3>
+        <h3>
+            Id:${user.id}, ${user.name} - [${user.email}] - ${user.role}
             <input type="hidden" name="id" value="${user.id}"/>
             <input type="hidden" name="name" value="${user.name}"/>
             <input type="hidden" name="email" value="${user.email}"/>
             <input type="hidden" name="role" value="${user.role}"/>
-        </fieldset>
+        </h3>
     </c:forEach>
 </form>
 

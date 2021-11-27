@@ -5,15 +5,27 @@
     <title>User medicines list</title>
 </head>
 <body>
+<%@ include file="header.jsp"%>
+<c:if test="${not empty requestScope.request && requestScope.request.equals('Покупка была отменена!')}">
+    <div style ="color: red">
+        <p>${requestScope.request}</p>
+    </div>
+</c:if>
+<c:if test="${not empty requestScope.request && requestScope.request.equals('Покупка была совершена!')}">
+    <div style ="color: blue">
+        <p>${requestScope.request}</p>
+    </div>
+</c:if>
 <form action="${pageContext.request.contextPath}/user-medicines" method="post">
     <c:forEach var="medicine" items="${sessionScope.medicines}">
-        <fieldset>
-            <h3><label>
+        <h3>
+            <label>
                 <input type="checkbox" name="medicineId" value="${medicine.id}"/>
-                    ${medicine.name} ${medicine.country} ${medicine.price} USD<br>
+                    ${medicine.name} (${medicine.country}) - ${medicine.price} $ <br>
                 Количество лекарства к покупке:<input type="number" name="quantity" value="0"/>
-            </label></h3>
-        </fieldset>
+            </label>
+
+        </h3>
     </c:forEach>
     <button type="submit">Добавить лекарства в корзину</button>
 </form>

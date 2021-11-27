@@ -4,8 +4,10 @@
     <title>Admin page</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/admin-users"><button type="button">Users</button></a>
 
-<a href="${pageContext.request.contextPath}/admin-medicines"><button type="button">Medicines</button></a>
+<%@ include file="header.jsp"%>
+<br>
+<a href="${pageContext.request.contextPath}/admin-users"><button type="button">Список пользователей</button></a>
+<a href="${pageContext.request.contextPath}/admin-medicines"><button type="button">Список лекарств</button></a>
 </body>
 </html>
