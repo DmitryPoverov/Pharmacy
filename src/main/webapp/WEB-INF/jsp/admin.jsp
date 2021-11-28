@@ -6,7 +6,7 @@
 <body>
 <%@ include file="header.jsp"%>
 <br>
-<a href="${pageContext.request.contextPath}/admin-users"><button type="button">Список пользователей</button></a>
-<a href="${pageContext.request.contextPath}/admin-medicines"><button type="button">Список лекарств</button></a>
+<a href="${pageContext.request.contextPath}/admin-users"><button type="button"><fmt:message key="user.list" /></button></a>
+<a href="${pageContext.request.contextPath}/admin-medicines"><button type="button"><fmt:message key="medicine.list" /></button></a>
 </body>
 </html>

@@ -11,18 +11,18 @@
         <h3>
             ${sessionScope.medicineDtos.get(index).name}
                 (${sessionScope.medicineDtos.get(index).country}) -
-                    ${sessionScope.medicineDtos.get(index).price} $:
-                        ${sessionScope.quantity[index]} items.
+                    ${sessionScope.medicineDtos.get(index).price}$:
+                        ${sessionScope.quantity[index]} <fmt:message key="medicines.items" />.
                 <br>
-                Total price of this medicine ${sessionScope.totalPriceEachMedicine.get(index)} $
+                <fmt:message key="button.medicine.total.price" /> ${sessionScope.totalPriceEachMedicine.get(index)}$
         </h3>
     </c:forEach>
     <br>
     <h3>
-        Total price ${sessionScope.totalPrice}
+        <fmt:message key="button.medicines.total.price" /> ${sessionScope.totalPrice}$
     </h3>
-    <button type="submit" name="submitReject" value="1">Отменить покупку</button>
-    <button type="submit" name="submitReject" value="2">Подтвердить покупку</button>
+    <button type="submit" name="submitReject" value="1"><fmt:message key="button.cart.reset" /></button>
+    <button type="submit" name="submitReject" value="2"><fmt:message key="button.cart.submit" /></button>
 </form>
 </body>
 </html>

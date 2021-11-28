@@ -1,8 +1,6 @@
 package by.pharmacy.servlet;
 
-import by.pharmacy.dto.MedicineDto;
 import by.pharmacy.service.MedicineService;
-import by.pharmacy.util.JspHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,14 +17,15 @@ public class FinalServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("submitReject").equals("1")) {
-            req.setAttribute("request", "Покупка была отменена!");
+            req.getSession().setAttribute("request", "Покупка была отменена!");
             req.getSession().setAttribute("medicines", medicineService.findAll());
-            req.getRequestDispatcher(JspHelper.getPath("user-medicines")).forward(req, resp);
-        } else if (req.getParameter("submitReject").equals("2")){
-            req.setAttribute("request", "Покупка была совершена!");
+            //req.getRequestDispatcher(JspHelper.getPath("user-medicines")).forward(req, resp);
+            resp.sendRedirect("http://localhost:8082/user-medicines");
+        } else if (req.getParameter("submitReject").equals("2")) {
+            req.getSession().setAttribute("request", "Покупка была совершена!");
             req.getSession().setAttribute("medicines", medicineService.findAll());
-            req.getRequestDispatcher(JspHelper.getPath("user-medicines")).forward(req, resp);
+            //req.getRequestDispatcher(JspHelper.getPath("user-medicines")).forward(req, resp);
+            resp.sendRedirect("http://localhost:8082/user-medicines");
         }
-
     }
 }

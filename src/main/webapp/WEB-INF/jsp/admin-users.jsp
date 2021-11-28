@@ -6,7 +6,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<h3>Список пользователей из базы данных:</h3>
+<h3><fmt:message key="users.db.list" /></h3>
 <form action="${pageContext.request.contextPath}/admin-users" method="post">
     <c:forEach var="user" items="${requestScope.users}">
         <h3>

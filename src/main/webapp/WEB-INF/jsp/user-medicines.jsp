@@ -5,28 +5,39 @@
     <title>User medicines list</title>
 </head>
 <body>
+
 <%@ include file="header.jsp"%>
-<c:if test="${not empty requestScope.request && requestScope.request.equals('Покупка была отменена!')}">
+
+<c:if test="${not empty sessionScope.request && sessionScope.request.equals('Покупка была отменена!')}">
     <div style ="color: red">
-        <p>${requestScope.request}</p>
+        <p><fmt:message key="error.purchase"/> </p>
     </div>
 </c:if>
-<c:if test="${not empty requestScope.request && requestScope.request.equals('Покупка была совершена!')}">
+
+<c:if test="${not empty sessionScope.request && sessionScope.request.equals('Покупка была совершена!')}">
     <div style ="color: blue">
-        <p>${requestScope.request}</p>
+        <p><fmt:message key="message.purchase"/></p>
     </div>
 </c:if>
-<form action="${pageContext.request.contextPath}/user-medicines" method="post">
+
+<c:if test="${not empty sessionScope.quantityError}">
+    <div style ="color: red">
+        <p><fmt:message key="error.quantity" /></p>
+    </div>
+</c:if>
+
+<form action="${pageContext.request.contextPath}/user-cart" method="post">
     <c:forEach var="medicine" items="${sessionScope.medicines}">
         <h3>
             <label>
                 <input type="checkbox" name="medicineId" value="${medicine.id}"/>
-                    ${medicine.name} (${medicine.country}) - ${medicine.price} $ <br>
-                Количество лекарства к покупке:<input type="number" name="quantity" value="0"/>
+                    ${medicine.name} (${medicine.country}) - ${medicine.price}$ <br>
+                <fmt:message key="medicine.quantity" /><input type="number" name="quantity" value="0"/>
             </label>
         </h3>
     </c:forEach>
-    <button type="submit">Добавить лекарства в корзину</button>
+    <button type="submit"><fmt:message key="button.medicines.add.to.cart" /></button>
 </form>
+
 </body>
 </html>
