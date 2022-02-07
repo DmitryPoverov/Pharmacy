@@ -6,7 +6,7 @@
 </head>
 <body>
 <%@ include file="header.jsp" %>
-<form action="/registration" method="post">
+<form action="${pageContext.request.contextPath}/registration" method="post">
     <label for="nameId"><fmt:message key="user.name" />
         <input type="text" name="userName" id="nameId">
     </label>
@@ -26,6 +26,5 @@
     <button type="submit"><fmt:message key="button.submit" /></button>
     <br>
 </form>
-
 </body>
 </html>

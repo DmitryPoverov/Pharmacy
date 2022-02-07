@@ -11,18 +11,21 @@
 <c:if test="${not empty sessionScope.request && sessionScope.request.equals('Покупка была отменена!')}">
     <div style ="color: red">
         <p><fmt:message key="error.purchase"/> </p>
+            ${sessionScope.remove('request')}
     </div>
 </c:if>
 
 <c:if test="${not empty sessionScope.request && sessionScope.request.equals('Покупка была совершена!')}">
     <div style ="color: blue">
         <p><fmt:message key="message.purchase"/></p>
+            ${sessionScope.remove('request')}
     </div>
 </c:if>
 
-<c:if test="${not empty sessionScope.quantityError}">
+<c:if test="${not empty sessionScope.quantityError && sessionScope.quantityError.equals('1')}">
     <div style ="color: red">
         <p><fmt:message key="error.quantity" /></p>
+            ${sessionScope.remove('quantityError')}
     </div>
 </c:if>
 

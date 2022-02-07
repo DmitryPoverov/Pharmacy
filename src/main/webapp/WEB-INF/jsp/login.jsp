@@ -27,7 +27,7 @@
     </c:if>
 </form>
 <h3>
-    <a href="http://localhost:8080/registration"><fmt:message key="message.first.time"/></a>
+    <a href="http://localhost:8082/registration"><fmt:message key="message.first.time"/></a>
 </h3>
 </body>
 </html>

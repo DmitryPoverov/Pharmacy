@@ -7,7 +7,7 @@
 <div>
     <c:if test="${not empty sessionScope.user}">
         <form action="${pageContext.request.contextPath}/logout" method="post">
-            <button type="submit"><fmt:message key="pharmacy.logout"/></button>
+            <button type="submit"><fmt:message key="pharmacy.logout" /></button>
         </form>
     </c:if>
 </div>

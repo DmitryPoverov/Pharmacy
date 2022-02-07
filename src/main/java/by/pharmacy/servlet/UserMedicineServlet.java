@@ -1,6 +1,5 @@
 package by.pharmacy.servlet;
 
-import by.pharmacy.dto.MedicineDto;
 import by.pharmacy.service.MedicineService;
 import by.pharmacy.util.JspHelper;
 
@@ -10,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/user-medicines")
 public class UserMedicineServlet extends HttpServlet {
